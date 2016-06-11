@@ -7,7 +7,11 @@ const LandingPage = () => (
       src="university.svg"
       role="presentation"
     />
-    <h3>Get involved in your community for fun, charity, and profit!</h3>
+    <h3>
+      Get involved in your community for fun, charity, and profit.
+      <br />
+      Micro-entreprenuership opportunities await!
+    </h3>
   </div>
 );
 
