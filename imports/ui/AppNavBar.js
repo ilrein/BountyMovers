@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor'; // eslint-disable-line
 import React, { Component } from 'react';
 
+import { APP_NAME } from './Constants';
 import AppBar from 'material-ui/AppBar';
 import UserNameContainer from '../containers/UserNameContainer';
 
@@ -28,7 +29,7 @@ class AppNavBar extends Component {
   render() {
     return (
       <AppBar
-        title="BountyMovers"
+        title={APP_NAME}
         onLeftIconButtonTouchTap={this.handleToggle}
       >
         <Drawer
