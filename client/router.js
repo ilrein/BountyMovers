@@ -1,18 +1,27 @@
 // Main rendering libraries
 import React from 'react';
 import { mount } from 'react-mounter';
+import { Tracker } from 'meteor/tracker'; // eslint-disable-line
 
 // Layouts
-// import MainLayout from '../imports/layouts/MainLayout';
+import MainLayout from '../imports/layouts/MainLayout';
 import BasicLayout from '../imports/layouts/BasicLayout';
 
 // Pages
 import Home from '../imports/ui/Home';
 import Register from '../imports/ui/Register';
+import Dashboard from '../imports/ui/Dashboard';
 
 // Needed for onTouchTap
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
+
+// Force login page if not authenticated
+Tracker.autorun(() => {
+  if (!Meteor.userId()) {
+    FlowRouter.go('/');
+  }
+});
 
 //-------
 // Routes
@@ -32,6 +41,15 @@ FlowRouter.route('/register', {
   action() {
     mount(BasicLayout, {
       content: (<Register />),
+    });
+  },
+});
+
+// Dashboard route
+FlowRouter.route('/dashboard', {
+  action() {
+    mount(MainLayout, {
+      content: (<Dashboard />),
     });
   },
 });
