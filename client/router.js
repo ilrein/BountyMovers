@@ -3,7 +3,8 @@ import React from 'react';
 import { mount } from 'react-mounter';
 
 // Layouts
-import MainLayout from '../imports/layouts/MainLayout';
+// import MainLayout from '../imports/layouts/MainLayout';
+import BasicLayout from '../imports/layouts/BasicLayout';
 
 // Pages
 import Home from '../imports/ui/Home';
@@ -20,7 +21,7 @@ injectTapEventPlugin();
 FlowRouter.route('/', {
   action() {
     console.log('hello');
-    mount(MainLayout, {
+    mount(BasicLayout, {
       content: (<Home />),
     });
   },
