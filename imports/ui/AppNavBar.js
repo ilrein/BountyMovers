@@ -1,5 +1,8 @@
+import { Meteor } from 'meteor/meteor'; // eslint-disable-line
 import React, { Component } from 'react';
+
 import AppBar from 'material-ui/AppBar';
+import UserNameContainer from '../containers/UserNameContainer';
 
 // Sidebar
 import Drawer from 'material-ui/Drawer';
@@ -29,7 +32,9 @@ class AppNavBar extends Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({ open })}
         >
-          <MenuItem onTouchTap={this.handleClose}>Menu Item</MenuItem>
+          <MenuItem disabled>
+            <UserNameContainer />
+          </MenuItem>
           <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
         </Drawer>
       </AppBar>
