@@ -8,6 +8,10 @@ import MainLayout from '../imports/layouts/MainLayout';
 // Pages
 import Home from '../imports/ui/Home';
 
+// Needed for onTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 //-------
 // Routes
 //-------
