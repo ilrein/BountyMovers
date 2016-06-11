@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import LoadingSpinner from './LoadingSpinner';
 
+// This is the core of the application
+// Might be a big file =)
+
 export default class Map extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +38,17 @@ export default class Map extends Component {
           },
           zoom: 14,
         });
-        console.log(map);
+
+        // add the user on the map
+        const userMaker = new google.maps.Marker({
+          position: {
+            lat: this.state.coords.latitude,
+            lng: this.state.coords.longitude,
+          },
+          map,
+          animation: google.maps.Animation.DROP,
+          icon: 'user-marker.svg',
+        });
       });
     } else {
       console.log('geolocation is not supported');
