@@ -1,0 +1,30 @@
+{
+  "servers": [
+    {
+      "host": "54.201.27.40",
+      "username": "ubuntu",
+      "pem": "~/.ssh/ir.pem"
+    }
+  ],
+
+  "setupMongo": true,
+
+  "setupNode": true,
+
+  "nodeVersion": "0.10.36",
+
+  "setupPhantom": false,
+
+  "enableUploadProgressBar": true,
+
+  "appName": "BountyMovers",
+
+  "app": "/Users/iliareingold/projects/meteor/BountyMovers",
+
+  "env": {
+    "PORT": 80,
+    "ROOT_URL": "http://54.201.27.40"
+  },
+
+  "deployCheckWaitTime": 15
+}

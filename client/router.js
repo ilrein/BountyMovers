@@ -16,13 +16,6 @@ import Dashboard from '../imports/ui/Dashboard';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-// Force login page if not authenticated
-Tracker.autorun(() => {
-  if (!Meteor.userId()) {
-    FlowRouter.go('/');
-  }
-});
-
 //-------
 // Routes
 //-------
@@ -52,4 +45,11 @@ FlowRouter.route('/dashboard', {
       content: (<Dashboard />),
     });
   },
+});
+
+// Force login page if not authenticated
+Tracker.autorun(() => {
+  if (!Meteor.userId()) {
+    FlowRouter.go('/');
+  }
 });
