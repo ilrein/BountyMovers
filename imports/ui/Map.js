@@ -8,6 +8,7 @@ export default class Map extends Component {
 
     this.state = {
       isLoaded: false,
+      coords: {},
     };
   }
 
@@ -17,8 +18,24 @@ export default class Map extends Component {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position.coords);
-        this.setState({ isLoaded: true });
+        this.setState({
+          isLoaded: true,
+          coords: position.coords,
+        });
+
+        // we can load the map now
+        // 'unused' vars get loaded into the canvas
+        // so we actually need them, disregard linter
+        /* eslint-disable no-unused-vars */
+
+        const map = new google.maps.Map(this.refs.map, {
+          center: {
+            lat: this.state.coords.latitude,
+            lng: this.state.coords.longitude,
+          },
+          zoom: 14,
+        });
+        console.log(map);
       });
     } else {
       console.log('geolocation is not supported');
@@ -28,7 +45,14 @@ export default class Map extends Component {
   render() {
     return (
       <div id="map-container">
-        {this.state.isLoaded ? <div id="map"></div> : <LoadingSpinner />}
+        {this.state.isLoaded ?
+          <div
+            id="map"
+            ref="map"
+          >
+          </div> :
+          <LoadingSpinner />
+        }
       </div>
     );
   }
