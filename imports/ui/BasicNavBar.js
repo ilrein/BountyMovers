@@ -6,6 +6,7 @@ const BasicNavBar = () => (
   <AppBar
     title={APP_NAME}
     showMenuIconButton={false}
+    style={{ boxShadow: 'none' }}
   />
 );
 
