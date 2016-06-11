@@ -1,0 +1,35 @@
+// Login
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    div {
+      flex: 1;
+      margin: 0 10px;
+    }
+  }
+}
+
+// Register
+
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    div {
+      flex: 1;
+      margin: 0 10px;
+    }
+  }
+}
