@@ -8,6 +8,7 @@ import MainLayout from '../imports/layouts/MainLayout';
 import BasicLayout from '../imports/layouts/BasicLayout';
 
 // Pages
+import TestPage from '../imports/ui/TestPage';
 import Home from '../imports/ui/Home';
 import Register from '../imports/ui/Register';
 import Dashboard from '../imports/ui/Dashboard';
@@ -43,6 +44,15 @@ FlowRouter.route('/dashboard', {
   action() {
     mount(MainLayout, {
       content: (<Dashboard />),
+    });
+  },
+});
+
+// test page
+FlowRouter.route('/test', {
+  action() {
+    mount(MainLayout, {
+      content: (<TestPage />),
     });
   },
 });

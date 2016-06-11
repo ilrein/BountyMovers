@@ -9,7 +9,6 @@ export default class Map extends Component {
     this.state = {
       isLoaded: false,
     };
-    console.log(google);
   }
 
   componentDidMount() {

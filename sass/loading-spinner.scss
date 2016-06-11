@@ -1,0 +1,39 @@
+// from https://codepen.io/gingerdude/pen/oxJbop (modified)
+
+$main: #00BCD4;
+$bg: darken($main, 5%);
+$bg-light: darken($main, 10%);
+$fg: darken($main, 15%);
+
+.loading-spinner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%);
+	height: 100px;
+	width: 40px;
+	border-radius: 10%;
+	background: $bg-light;
+	border-top-color: $fg;
+	animation: fade2 1s infinite;
+	transition: background .2s;
+	&:after, &:before {
+		content: '';
+		position: absolute;
+		display: block;
+		height: 80px;
+		width: 40px;
+		background: $bg;
+		top: 50%;
+		transform: translateY(-50%);
+		left: -60px;
+		border-radius: 10%;
+		animation: fade1 1s infinite;
+		transition: background .2s;
+	}
+	&:before { left: 60px; animation: fade3 1s infinite; }
+}
+
+@keyframes fade1 {	0% { background: $fg; } }
+@keyframes fade2 {	33% { background: $fg; } }
+@keyframes fade3 {	66% { background: $fg; } }
