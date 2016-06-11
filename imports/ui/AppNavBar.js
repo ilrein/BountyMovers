@@ -14,6 +14,11 @@ class AppNavBar extends Component {
 
     this.state = { open: false };
     this.handleToggle = this.handleToggle.bind(this);
+    this.onTouchTapLogout = this.onTouchTapLogout.bind(this);
+  }
+
+  onTouchTapLogout() {
+    Meteor.logout();
   }
 
   handleToggle() {
@@ -35,7 +40,7 @@ class AppNavBar extends Component {
           <MenuItem disabled>
             <UserNameContainer />
           </MenuItem>
-          <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
+          <MenuItem onTouchTap={this.onTouchTapLogout}>Logout</MenuItem>
         </Drawer>
       </AppBar>
     );
