@@ -5,12 +5,12 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // Navbar
-import AppNavBar from '../ui/AppNavBar';
+import BasicNavBar from '../ui/BasicNavBar';
 
 const BasicLayout = ({ content }) => (
   <MuiThemeProvider muiTheme={getMuiTheme()}>
     <main className="basic-layout">
-      <AppNavBar />
+      <BasicNavBar />
       {content}
     </main>
   </MuiThemeProvider>

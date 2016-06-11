@@ -4,9 +4,13 @@ import React, { PropTypes } from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+// Navbar
+import AppNavBar from '../ui/AppNavBar';
+
 const MainLayout = ({ content }) => (
   <MuiThemeProvider muiTheme={getMuiTheme()}>
-    <main>
+    <main className="main-layout">
+      <AppNavBar />
       {content}
     </main>
   </MuiThemeProvider>
