@@ -2,12 +2,25 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import OpportunitiesCountContainer from '../containers/OpportunitiesCountContainer';
+import CreateModal from './CreateModal';
 
 export default class ActionBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { modalOpen: false };
+
+    this.closeModal = this.closeModal.bind(this);
+    this.toggleCreateModal = this.toggleCreateModal.bind(this);
+  }
+
+  closeModal() {
+    this.setState({ modalOpen: false });
+  }
+
+  toggleCreateModal() {
+    console.log('clicked create');
+    this.setState({ modalOpen: true });
   }
 
   render() {
@@ -19,6 +32,11 @@ export default class ActionBar extends React.Component {
           <RaisedButton
             label="Create Opportunity"
             secondary
+            onTouchTap={this.toggleCreateModal}
+          />
+          <CreateModal
+            open={this.state.modalOpen}
+            handleCancel={this.closeModal}
           />
         </div>
       </div>
