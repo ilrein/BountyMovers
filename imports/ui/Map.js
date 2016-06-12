@@ -42,6 +42,8 @@ export default class Map extends Component {
           zoom: 14,
         });
 
+        this.props.delegate(map);
+
         // add the user on the map
         const userMaker = new google.maps.Marker({
           position: {
@@ -55,7 +57,18 @@ export default class Map extends Component {
 
         const opps = Opportunities.find({});
         opps.forEach((opp, index) => {
-          console.log(opp, index);
+          let icon;
+          if (opp.notForProfit) icon = 'dove.svg';
+          else icon = 'job-marker.svg';
+          const oppMarker = new google.maps.Marker({
+            position: {
+              lat: opp.position.lat,
+              lng: opp.position.lng,
+            },
+            map,
+            animation: google.maps.Animation.DROP,
+            icon,
+          });
         });
       });
     } else {
@@ -80,3 +93,7 @@ export default class Map extends Component {
     );
   }
 }
+
+Map.propTypes = {
+  delegate: React.PropTypes.any,
+};

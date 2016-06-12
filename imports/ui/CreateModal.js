@@ -18,7 +18,7 @@ export default class CreateModal extends Component {
       title: null,
       description: null,
       hours: null,
-      forProfit: true,
+      notForProfit: true,
       rate: null,
       createFormIsInvalid: true,
     };
@@ -78,7 +78,7 @@ export default class CreateModal extends Component {
   }
 
   handleCheck() { // eslint-disable-line
-    this.setState({ forProfit: !this.state.forProfit });
+    this.setState({ notForProfit: !this.state.notForProfit });
   }
 
   setRate(rate) {
@@ -194,7 +194,7 @@ export default class CreateModal extends Component {
         <TextField
           hintText="Rate per hour $"
           ref="rate"
-          disabled={this.state.forProfit}
+          disabled={this.state.notForProfit}
           onChange={this.setRate}
         />
       </Dialog>

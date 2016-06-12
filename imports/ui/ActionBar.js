@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import OpportunitiesCountContainer from '../containers/OpportunitiesCountContainer';
 import CreateModal from './CreateModal';
 
-export default class ActionBar extends React.Component {
+export default class ActionBar extends Component {
   constructor(props) {
     super(props);
 
@@ -27,6 +27,7 @@ export default class ActionBar extends React.Component {
 
   handleSubmit() {
     this.setState({ modalOpen: false });
+    this.props.addedNewOpp();
   }
 
   render() {
@@ -50,3 +51,7 @@ export default class ActionBar extends React.Component {
     );
   }
 }
+
+ActionBar.propTypes = {
+  addedNewOpp: PropTypes.func,
+};
