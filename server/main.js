@@ -13,25 +13,49 @@ Accounts.onCreateUser((options, user) => {
   return user;
 });
 
-// I need to fake about 10 000 jobs
-// I won't address performance and scale during a hackathon
-// I'll need to differentiate between various microjobs
-// community services are good too
-
-// let's do 1000 charitable/volunteer opportunities
-// let's do 200 retweets for $0.50
-// 200 mow the lawn contracts
-// 500 plumber contracts
-// 400 electrician contracts
-// 500 maid contracts
-// need to come up with more...
+// I'll fake a few good examples
 
 const places = JSON.parse(Assets.getText('places.json'));
 
 Meteor.startup(() => {
   console.log('Our app is live =)');
-  const firstName = faker.name.firstName();
-  const lastName = faker.name.lastName();
+  // const firstName = faker.name.firstName();
+  // const lastName = faker.name.lastName();
+  console.log(places);
 
-  console.log(firstName, lastName, places);
+  if (Opportunities.find({}).count() === 0) {
+    console.log('no opps, seeding...');
+
+    places.places.forEach((place, index) => {
+      console.log(index, place);
+      // "location": "211 Yonge St, ON",
+      //   "title": "Drive",
+      //   "description": "car",
+      //   "hours": "2",
+      //   "notForProfit": false,
+      //   "rate": "2",
+      //   "createFormIsInvalid": false,
+      //   "position": {
+      //     "lat": 43.6538403,
+      //     "lng": -79.3795657
+      //   }
+      // }
+      //
+
+      Opportunities.insert({
+        date: faker.date.future(),
+        time: faker.date.future(),
+        address: place.address,
+        title: faker.name.jobTitle(),
+        description: faker.company.catchPhrase(),
+        hours: Math.floor(Math.random() * 6) + 1,
+        notForProfit: place.notForProfit,
+        rate: place.notForProfit ? 0 : Math.floor(Math.random() * 40) + 1,
+        position: {
+          lat: place.lat,
+          lng: place.lng,
+        },
+      });
+    });
+  }
 });

@@ -78,6 +78,12 @@ export default class Map extends Component {
               <div class="infobox-description">
                 Description: ${opp.description}
               </div>
+              <div class="infobox-description">
+                Date: ${opp.date}
+              </div>
+              <div class="infobox-description">
+                Time: ${opp.time}
+              </div>
               <div class="infobox-hours">
                 Hours: ${opp.hours}
               </div>
@@ -95,6 +101,12 @@ export default class Map extends Component {
               </div>
               <div class="infobox-description">
                 Description: ${opp.description}
+              </div>
+              <div class="infobox-description">
+                Date: ${opp.date}
+              </div>
+              <div class="infobox-description">
+                Time: ${opp.time}
               </div>
               <div class="infobox-hours">
                 Hours: ${opp.hours}

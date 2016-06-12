@@ -2,11 +2,16 @@
   "places": [
     {
       "name": "ACCES Employment (Downtown Toronto)",
-      "address": "489 College St. Suite #100, Toronto, ON M6G 1A5"
+      "address": "489 College St. Suite #100, Toronto, ON M6G 1A5",
+      "lat": 40.7127837,
+      "lng": -74.00594130000002,
+      "notForProfit": true
     },
     {
       "name": "ACCES Employment (North York)",
-      "address": "1500 Don Mills Rd. Suite #102, North York, ON M3B 3L7"
+      "address": "1500 Don Mills Rd. Suite #102, North York, ON M3B 3L7",
+      "lat": 43.75504249999999,
+      "lng": -79.34774549999997
     }
   ]
 }
