@@ -69,6 +69,14 @@ export default class Map extends Component {
             animation: google.maps.Animation.DROP,
             icon,
           });
+          const contentString =
+            `<div>I am infowindow</div>`;
+          const infoWindow = new google.maps.InfoWindow({
+            content: contentString,
+          });
+          oppMarker.addListener('click', () => {
+            infoWindow.open(map, oppMarker);
+          });
         });
       });
     } else {
