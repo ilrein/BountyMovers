@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor'; // eslint-disable-line
 import React, { Component, PropTypes } from 'react';
 import TimePicker from 'material-ui/TimePicker';
 import DatePicker from 'material-ui/DatePicker';
@@ -19,6 +20,7 @@ export default class CreateModal extends Component {
       hours: null,
       forProfit: true,
       rate: null,
+      createFormIsInvalid: true,
     };
 
     this.checkIfAllInputsAreValid = this.checkIfAllInputsAreValid.bind(this);
@@ -30,6 +32,7 @@ export default class CreateModal extends Component {
     this.setHours = this.setHours.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.setRate = this.setRate.bind(this);
+    this.handleCreate = this.handleCreate.bind(this);
   }
 
   setDate(non, date) {
@@ -48,28 +51,28 @@ export default class CreateModal extends Component {
 
   setLocation(location) {
     this.setState({
-      location,
+      location: location.currentTarget.value,
     });
     this.checkIfAllInputsAreValid();
   }
 
   setTitle(title) {
     this.setState({
-      title,
+      title: title.currentTarget.value,
     });
     this.checkIfAllInputsAreValid();
   }
 
   setDescription(description) {
     this.setState({
-      description,
+      description: description.currentTarget.value,
     });
     this.checkIfAllInputsAreValid();
   }
 
   setHours(hours) {
     this.setState({
-      hours,
+      hours: hours.currentTarget.value,
     });
     this.checkIfAllInputsAreValid();
   }
@@ -80,21 +83,50 @@ export default class CreateModal extends Component {
 
   setRate(rate) {
     this.setState({
-      rate,
+      rate: rate.currentTarget.value,
     });
     this.checkIfAllInputsAreValid();
+  }
+
+  handleCreate() {
+    // lets geocode the address
+    // then store to the database
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+      address: this.state.location,
+    }, (results, status) => {
+      if (status === google.maps.GeocoderStatus.OK) {
+        const updated = Object.assign({}, this.state, {
+          position: {
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+          },
+        });
+        Meteor.call('insertOpportunity', updated, (err, res) => {
+          if (!err) {
+            console.log(res);
+            this.props.handleSubmit();
+          }
+        });
+      } else {
+        console.log('error', status);
+      }
+    });
   }
 
   checkIfAllInputsAreValid() {
     if (
       this.state.location !== null &&
+      this.state.location !== '' &&
       this.state.time !== null &&
       this.state.title !== null &&
       this.state.description !== null
     ) {
-      console.log('all inputs are valid');
+      // console.log('all inputs are valid');
+      this.setState({ createFormIsInvalid: false });
     } else {
-      console.log('inputs are not valid', this.state);
+      // console.log('inputs are not valid', this.state);
+      this.setState({ createFormIsInvalid: true });
     }
   }
 
@@ -108,7 +140,7 @@ export default class CreateModal extends Component {
       <FlatButton
         label="Submit"
         primary
-        disabled={this.props.createFormIsInvalid}
+        disabled={this.state.createFormIsInvalid}
         onTouchTap={this.handleCreate}
       />,
     ];
@@ -174,5 +206,5 @@ export default class CreateModal extends Component {
 CreateModal.propTypes = {
   open: PropTypes.bool,
   handleCancel: PropTypes.func,
-  createFormIsInvalid: PropTypes.bool,
+  handleSubmit: PropTypes.func,
 };

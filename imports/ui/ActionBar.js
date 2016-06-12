@@ -10,11 +10,11 @@ export default class ActionBar extends React.Component {
 
     this.state = {
       modalOpen: false,
-      createFormIsInvalid: true,
     };
 
     this.closeModal = this.closeModal.bind(this);
     this.toggleCreateModal = this.toggleCreateModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   closeModal() {
@@ -23,6 +23,10 @@ export default class ActionBar extends React.Component {
 
   toggleCreateModal() {
     this.setState({ modalOpen: true });
+  }
+
+  handleSubmit() {
+    this.setState({ modalOpen: false });
   }
 
   render() {
@@ -39,7 +43,7 @@ export default class ActionBar extends React.Component {
           <CreateModal
             open={this.state.modalOpen}
             handleCancel={this.closeModal}
-            createFormIsInvalid={this.state.createFormIsInvalid}
+            handleSubmit={this.handleSubmit}
           />
         </div>
       </div>
