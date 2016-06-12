@@ -1,0 +1,19 @@
+.action-bar {
+  display: flex;
+  background-color: white;
+  .action-item {
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+
+    span {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .total-opportunities {
+      font-size: 3rem;
+    }
+  }
+}

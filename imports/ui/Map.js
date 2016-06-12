@@ -8,6 +8,7 @@ import LoadingSpinner from './LoadingSpinner';
 export default class Map extends Component {
   constructor(props) {
     super(props);
+    // console.log();
 
     this.state = {
       isLoaded: false,
