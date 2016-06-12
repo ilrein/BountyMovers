@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import TimePicker from 'material-ui/TimePicker';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -9,7 +10,15 @@ export default class CreateModal extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      forProfit: true,
+    };
+
+    this.handleCheck = this.handleCheck.bind(this);
+  }
+
+  handleCheck() {
+    this.setState({ forProfit: !this.state.forProfit });
   }
 
   render() {
@@ -22,7 +31,7 @@ export default class CreateModal extends Component {
       <FlatButton
         label="Submit"
         primary
-        disabled={this.props.createFormIsValid}
+        disabled={this.props.createFormIsInvalid}
         onTouchTap={this.handleCreate}
       />,
     ];
@@ -33,6 +42,7 @@ export default class CreateModal extends Component {
         actions={actions}
         modal
         open={this.props.open}
+        autoScrollBodyContent
       >
         <p>Enter the logistical details</p>
         <DatePicker
@@ -57,6 +67,21 @@ export default class CreateModal extends Component {
           hintText="Description"
           ref="description"
         />
+        <br />
+        <TextField
+          hintText="Total hours required"
+          ref="hours"
+        />
+        <Checkbox
+          label="For profit"
+          className="checkbox"
+          onCheck={this.handleCheck}
+        />
+        <TextField
+          hintText="Rate per hour"
+          ref="rate"
+          disabled={this.state.forProfit}
+        />
       </Dialog>
     );
   }
@@ -65,5 +90,5 @@ export default class CreateModal extends Component {
 CreateModal.propTypes = {
   open: PropTypes.bool,
   handleCancel: PropTypes.func,
-  createFormIsValid: PropTypes.bool,
+  createFormIsInvalid: PropTypes.bool,
 };
