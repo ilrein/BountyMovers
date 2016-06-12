@@ -22,7 +22,6 @@ export default class ActionBar extends React.Component {
   }
 
   toggleCreateModal() {
-    console.log('clicked create');
     this.setState({ modalOpen: true });
   }
 
