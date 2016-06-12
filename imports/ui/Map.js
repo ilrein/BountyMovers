@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor'; // eslint-disable-line
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 import LoadingSpinner from './LoadingSpinner';
 import OpportunitiesContainer from '../containers/OpportunitiesContainer';
@@ -39,7 +40,7 @@ export default class Map extends Component {
             lat: this.state.coords.latitude,
             lng: this.state.coords.longitude,
           },
-          zoom: 14,
+          zoom: 10,
         });
 
         this.props.delegate(map);
@@ -69,10 +70,47 @@ export default class Map extends Component {
             animation: google.maps.Animation.DROP,
             icon,
           });
-          const contentString =
-            `<div>I am infowindow</div>`;
+          const charityString =
+            `<div class="infobox">
+              <div class="infobox-title">
+                Title: ${opp.title}
+              </div>
+              <div class="infobox-description">
+                Description: ${opp.description}
+              </div>
+              <div class="infobox-hours">
+                Hours: ${opp.hours}
+              </div>
+              <div class="infobox-action">
+                <button onclick='console.log("Hello")'>Apply</button>
+              </div>
+              <div class="infobox-warning">
+                *CommerceCommunity is in Beta and all applications are disabled.
+              </div>
+            </div>`;
+          const jobString =
+            `<div class="infobox">
+              <div class="infobox-title">
+                Title: ${opp.title}
+              </div>
+              <div class="infobox-description">
+                Description: ${opp.description}
+              </div>
+              <div class="infobox-hours">
+                Hours: ${opp.hours}
+              </div>
+              <div class="infobox-rate">
+                Rate: $${opp.rate}
+              </div>
+              <div class="infobox-action">
+                <button onclick='' class="infobox-button">Apply</button>
+              </div>
+              <div class="infobox-warning">
+                *CommerceCommunity is in Beta and all applications are disabled.
+              </div>
+            </div>`;
           const infoWindow = new google.maps.InfoWindow({
-            content: contentString,
+            content: opp.notForProfit ? charityString : jobString,
           });
           oppMarker.addListener('click', () => {
             infoWindow.open(map, oppMarker);
