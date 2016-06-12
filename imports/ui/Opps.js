@@ -7,9 +7,8 @@ export default class Opps extends Component {
   }
 
   render() {
-    console.log(this.props.opps);
     return (
-      <div className="marker">
+      <div className="opps">
         {this.props.children}
       </div>
     );

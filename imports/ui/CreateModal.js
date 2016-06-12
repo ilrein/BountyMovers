@@ -102,9 +102,8 @@ export default class CreateModal extends Component {
             lng: results[0].geometry.location.lng(),
           },
         });
-        Meteor.call('insertOpportunity', updated, (err, res) => {
+        Meteor.call('insertOpportunity', updated, (err) => {
           if (!err) {
-            console.log(res);
             this.props.handleSubmit();
           }
         });
