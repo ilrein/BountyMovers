@@ -34,7 +34,7 @@ class AppNavBar extends Component {
       >
         <Drawer
           docked={false}
-          width={200}
+          width={400}
           open={this.state.open}
           onRequestChange={(open) => this.setState({ open })}
         >
