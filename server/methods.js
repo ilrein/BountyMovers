@@ -1,5 +1,5 @@
 Meteor.methods({
   insertOpportunity(opportunity) {
-    return Opportunities.insert(opportunity);     
+    return Opportunities.insert(opportunity);
   },
 });

@@ -1,6 +1,8 @@
+import { Meteor } from 'meteor/meteor'; // eslint-disable-line
 import React, { Component } from 'react';
 
 import LoadingSpinner from './LoadingSpinner';
+import OpportunitiesContainer from '../containers/OpportunitiesContainer';
 
 // This is the core of the application
 // Might be a big file =)
@@ -50,6 +52,11 @@ export default class Map extends Component {
           animation: google.maps.Animation.DROP,
           icon: 'user-marker.svg',
         });
+
+        const opps = Opportunities.find({});
+        opps.forEach((opp, index) => {
+          console.log(opp, index);
+        });
       });
     } else {
       console.log('geolocation is not supported');
@@ -58,16 +65,18 @@ export default class Map extends Component {
 
   render() {
     return (
-      <div id="map-container">
-        {this.state.isLoaded ?
-          <div
-            id="map"
-            ref="map"
-          >
-          </div> :
-          <LoadingSpinner />
-        }
-      </div>
+      <OpportunitiesContainer>
+        <div id="map-container">
+          {this.state.isLoaded ?
+            <div
+              id="map"
+              ref="map"
+            >
+            </div> :
+            <LoadingSpinner />
+          }
+        </div>
+      </OpportunitiesContainer>
     );
   }
 }
