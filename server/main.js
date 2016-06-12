@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor'; // eslint-disable-line
+const faker = require('faker');
 
 // add some on createHooks
 /* eslint-disable no-param-reassign */
@@ -23,8 +24,14 @@ Accounts.onCreateUser((options, user) => {
 // 500 plumber contracts
 // 400 electrician contracts
 // 500 maid contracts
-//
+// need to come up with more...
+
+const places = JSON.parse(Assets.getText('places.json'));
 
 Meteor.startup(() => {
   console.log('Our app is live =)');
+  const firstName = faker.name.firstName();
+  const lastName = faker.name.lastName();
+
+  console.log(firstName, lastName, places);
 });
