@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import TimePicker from 'material-ui/TimePicker';
+import DatePicker from 'material-ui/DatePicker';
+import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-
-/**
- * A modal dialog can only be closed by selecting one of the actions.
- */
 
 export default class CreateModal extends Component {
   constructor(props) {
@@ -12,7 +11,7 @@ export default class CreateModal extends Component {
 
     this.state = {};
   }
-  
+
   render() {
     const actions = [
       <FlatButton
@@ -23,19 +22,41 @@ export default class CreateModal extends Component {
       <FlatButton
         label="Submit"
         primary
-        disabled
+        disabled={this.props.createFormIsValid}
         onTouchTap={this.handleCreate}
       />,
     ];
 
     return (
       <Dialog
-        title="Dialog With Actions"
+        title="Create a New Opportunity"
         actions={actions}
         modal
         open={this.props.open}
       >
-        Only actions can close this dialog.
+        <p>Enter the logistical details</p>
+        <DatePicker
+          hintText="Set the date"
+          ref="date"
+        />
+        <TimePicker
+          hintText="Set the time"
+          ref="time"
+        />
+        <TextField
+          hintText="Location"
+          ref="location"
+        />
+        <p>Enter the description</p>
+        <TextField
+          hintText="Opportunity title"
+          ref="title"
+        />
+        <br />
+        <TextField
+          hintText="Description"
+          ref="description"
+        />
       </Dialog>
     );
   }
@@ -44,4 +65,5 @@ export default class CreateModal extends Component {
 CreateModal.propTypes = {
   open: PropTypes.bool,
   handleCancel: PropTypes.func,
+  createFormIsValid: PropTypes.bool,
 };
