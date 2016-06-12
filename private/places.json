@@ -1,17 +1,52 @@
 {
   "places": [
     {
-      "name": "ACCES Employment (Downtown Toronto)",
       "address": "489 College St. Suite #100, Toronto, ON M6G 1A5",
       "lat": 40.7127837,
       "lng": -74.00594130000002,
       "notForProfit": true
     },
     {
-      "name": "ACCES Employment (North York)",
       "address": "1500 Don Mills Rd. Suite #102, North York, ON M3B 3L7",
       "lat": 43.75504249999999,
-      "lng": -79.34774549999997
+      "lng": -79.34774549999997,
+      "notForProfit": false
+    },
+    {
+      "address": "1620 Albion Rd, 2nd Floor, Etobicoke, ON M9V 4B4",
+      "lat": 43.7420185,
+      "lng": -79.59107640000002,
+      "notForProfit": true
+    },
+    {
+      "address": "200 Consumers Rd, 9th Floor, Toronto, ON M2J 4G8",
+      "lat": 43.77281199999999,
+      "lng": -79.33106880000003,
+      "notForProfit": true
+    },
+    {
+      "address": "4700 Keele St. Suite 2005, TEL Building Toronto, ON M3J 1P3",
+      "lat": 43.7728399,
+      "lng": -79.49499449999996,
+      "notForProfit": true
+    },
+    {
+      "address": "105 St. George Street Toronto,ON M5S 2V8 Canada",
+      "lat": 43.6653357,
+      "lng": -79.39837109999996,
+      "notForProfit": false
+    },
+    {
+      "address": "219 Dufferin Street, Building 201, Suite 1C, Toronto ON M6K 3J1",
+      "lat": 43.6368457,
+      "lng": -79.4262003,
+      "notForProfit": false
+    },
+    {
+      "address": "791 St. Clair AveWest",
+      "lat": 43.68061960000001,
+      "lng": -79.429821,
+      "notForProfit": false
     }
   ]
 }
