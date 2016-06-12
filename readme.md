@@ -3,7 +3,8 @@
 
 By Ilia Reingold
 
-[google maps Toronto]
+A reference for valid places in Toronto I can use: 
+[google maps @Toronto]
 (https://www.google.com/maps/d/viewer?mid=1qPsHSg356woWvNEkhGlI_oAKGHc&hl=en_US)
 
 ### Nounproject credits
